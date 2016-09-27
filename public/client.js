@@ -11,7 +11,8 @@ $(document).ready(function () {
     var navbar_height = $('.navbar').height();
     var offset = 27;
     var width = window.innerWidth;
-    var height = window.innerHeight - navbar_height - offset;
+    var rect = canvas.getBoundingClientRect();
+    var height = window.innerHeight - rect.top - 5;
     var socket = io.connect();
 
     canvas.width = width;
@@ -29,8 +30,8 @@ $(document).ready(function () {
     canvas.onmouseup = function (e) { mouse.click = false; };
     
     function move(e){
-        mouse.pos.x = e.clientX / width;
-        mouse.pos.y = e.clientY / height;
+        mouse.pos.x = (e.clientX - rect.left) / width;
+        mouse.pos.y = (e.clientY - rect.top)/ height;
         mouse.move = true;
     }
 

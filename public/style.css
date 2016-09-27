@@ -13,3 +13,7 @@ body, html{
 .cont{
     height: 100%;
 }
+
+.navbar{
+    margin-bottom: 0px !important;
+}
