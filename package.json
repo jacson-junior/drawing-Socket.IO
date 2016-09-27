@@ -1,0 +1,20 @@
+{
+  "name": "drawing",
+  "description": "Ferramenta colaborativa de Desenho",
+  "author": "Jacson Junior",
+  "dependencies": {
+    "express": "4.x",
+    "socket.io": "*"
+  },
+  "engines": {
+    "node": "6.2.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "keywords": [],
+  "license": "MIT"
+}
