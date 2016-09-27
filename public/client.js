@@ -21,14 +21,20 @@ $(document).ready(function () {
         socket.emit("clear");
     });
 
+    canvas.addEventListener("touchstart", function (){ mouse.click = true }, false);
+    canvas.addEventListener("touchend", function (){ mouse.click = false }, false);
+    canvas.addEventListener("touchmove", move, false);
+    
     canvas.onmousedown = function (e) { mouse.click = true; };
     canvas.onmouseup = function (e) { mouse.click = false; };
-
-    canvas.onmousemove = function (e) {
+    
+    function move(e){
         mouse.pos.x = e.clientX / width;
         mouse.pos.y = e.clientY / height;
         mouse.move = true;
-    };
+    }
+
+    canvas.onmousemove = function (e) { move(e) };
 
     socket.on('draw_line', function (data) {
         var line = data.line;
