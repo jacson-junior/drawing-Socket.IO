@@ -6,6 +6,7 @@ var express = require('express'),
 var server = http.createServer(app);
 var io = io.listen(server);
 server.listen(process.env.PORT || 8008);
+process.env.PWD = process.cwd()
 app.use(express.static(__dirname + '/public'));
 app.use('/', express.static(__dirname + '/www')); 
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); 
@@ -18,8 +19,10 @@ app.use('/img', express.static(__dirname + '/node_modules/bootstrap-colorpicker/
 var line_history = [];
 
 io.on('connection', function (socket) {
-    for (var i in line_history) {
-        socket.emit('draw_line', { line: line_history[i] });
+    if(line_history > 0){
+        for (var i in line_history) {
+            socket.emit('draw_line', { line: line_history[i] });
+        }
     }
     socket.on('draw_line', function (data) {
         line_history.push(data);

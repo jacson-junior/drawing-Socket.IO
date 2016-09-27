@@ -4,7 +4,9 @@
   "author": "Jacson Junior",
   "dependencies": {
     "express": "4.x",
-    "socket.io": "*"
+    "socket.io": "*",
+    "bootstrap": "3.3.7",
+    "bootstrap-colorpicker": "2.3.5"
   },
   "engines": {
     "node": "6.2.0"
