@@ -18,11 +18,10 @@ app.use('/img', express.static(__dirname + '/node_modules/bootstrap-colorpicker/
 var line_history = [];
 
 io.on('connection', function (socket) {
-    if(line_history > 0){
-        for (var i in line_history) {
-            socket.emit('draw_line', { line: line_history[i] });
-        }
+    for (var i in line_history) {
+        socket.emit('draw_line', { line: line_history[i] });
     }
+    
     socket.on('draw_line', function (data) {
         line_history.push(data);
         io.emit('draw_line', data);
